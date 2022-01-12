@@ -1,7 +1,7 @@
 const fs = require('fs')
 class Contenedor {
-    constructor(producto) {
-        this.producto = producto
+    constructor() {
+      
     }
     save(producto) {
         producto.id =  Date.now()
@@ -13,8 +13,8 @@ class Contenedor {
         } catch (error) {
             throw new Error('No se pudo guardar el producto')
         }
-        
     }
+    
     getById(id) {
         const data = this.getAll()
         return data.find(producto => producto.id === id) || null
@@ -44,5 +44,6 @@ class Contenedor {
             throw new Error('No se pudo eliminar el producto')
         }
     }
+   
 }
 module.exports = Contenedor

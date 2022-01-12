@@ -1,5 +1,5 @@
 const  Contenedor =  require('./Contenedor')
-const p = new Contenedor([])
+const p = new Contenedor()
 
 //guardar producto
 p.save({
@@ -14,4 +14,4 @@ p.deleteById(1641933911054)
 //traer todo
 console.log(p.getAll())
 //eliminar todos los elementos
-p.deleteAll()
+//p.deleteAll()
