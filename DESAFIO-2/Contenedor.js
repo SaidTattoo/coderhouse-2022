@@ -3,20 +3,20 @@ class Contenedor {
     constructor() {
       
     }
-    save(producto) {
+    async save(producto) {
         producto.id =  Date.now()
-        const data = this.getAll()
+        const data = await this.getAll()
         data.push(producto)
         try {
             fs.writeFileSync('productos.txt', JSON.stringify(data,null,4))
             return producto.id
         } catch (error) {
-            throw new Error('No se pudo guardar el producto')
+            throw new Error(error,'No se pudo guardar el producto')
         }
     }
     
     getById(id) {
-        const data = this.getAll()
+        const  data = this.getAll()
         return data.find(producto => producto.id === id) || null
     }
     getAll() {
@@ -31,7 +31,7 @@ class Contenedor {
         const data = this.getAll()
         const deleted = data.filter(producto => producto.id !== id)
         try{
-            fs.writeFileSync('productos.txt', JSON.stringify(deleted,null,4))
+            fs.writeFile('productos.txt', JSON.stringify(deleted,null,4))
         }catch(error){
             throw new Error('No se pudo eliminar el producto')
         }
@@ -39,7 +39,7 @@ class Contenedor {
     deleteAll(){
         const data = []
         try{
-        fs.writeFileSync('productos.txt', JSON.stringify(data,null,4))    
+            fs.writeFile('productos.txt', JSON.stringify(data,null,4))    
         }catch(error){
             throw new Error('No se pudo eliminar el producto')
         }

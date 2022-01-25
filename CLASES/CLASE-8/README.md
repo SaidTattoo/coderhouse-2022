@@ -1,0 +1,3 @@
+- [x] archivos estaticos 
+- [x] manejo de rutas 
+- [x] storage con multer 

@@ -10,8 +10,8 @@ p.save({
 //buscar elemento por id
 console.log(p.getById(1641936295804))
 //eliminar elemento por id
-p.deleteById(1641933911054)
+// p.deleteById(1641933911054)
 //traer todo
-console.log(p.getAll())
+// console.log(p.getAll())
 //eliminar todos los elementos
 //p.deleteAll()
