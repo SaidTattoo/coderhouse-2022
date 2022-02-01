@@ -6,6 +6,7 @@ const c = new Contenedor()
 
 app.set("views", "./views")
 app.set("view engine", "ejs")
+app.engine('ejs', require('ejs').__express);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
