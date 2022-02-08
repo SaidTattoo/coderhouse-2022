@@ -5,7 +5,8 @@ const io = require('socket.io')(server);
 const productosRouter = require('./routes');
 const  { engine } = require('express-handlebars');
 const Contenedor = require('./service/Contenedor');
-
+const identicon = require('identicon')
+const fs = require('fs')
 const c = new Contenedor()
 
 app.engine("hbs", engine({
@@ -35,21 +36,27 @@ app.get('/productos/vista',(req, res) => {
 
 
 //-------------------sockets -------------------//
-io.on('connect', (socket) => {
-    console.log('a user connected');
+ io.on('connection',  (socket) => { 
+
+    console.log('id', socket.id)
+     identicon.generate({id:socket.id, size:100},(err,buffer) => {
+        if (err) throw err
+         fs.writeFileSync(`./public/img/${socket.id}.png`, buffer)
+    })
     socket.on('disconnect', () => {
-      console.log('user disconnected');
+      io.emit('disconected', 'user disconnected');
     });
-    socket.emit('message', { text: 'Welcome to socket.io' });
-    socket.emit('productos', c.getAll())
+    io.emit('productos', c.getAll())
     socket.on('addNewProduct', (data) => {
         console.log(data)
         c.save(data)
-        socket.emit('productos', c.getAll())
+        io.emit('productos', c.getAll())
+    }) 
+    //chat room
+    socket.on('newMessage', (data) => {
+        io.emit('message', data)
     })
 });
-
-
 
 
 

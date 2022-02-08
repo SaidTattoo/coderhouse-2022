@@ -12,27 +12,9 @@
         "id": 1642019251092
     },
     {
-        "title": "gg",
-        "price": "123",
-        "thumbnail": "https://cdn4.iconfinder.com/data/icons/open-peeps-busts/324/peep-18-256.png",
-        "id": 1643694196228
-    },
-    {
-        "title": "superman",
-        "price": "10000",
-        "thumbnail": "https://movieplay02.akamaized.net/14786-thickbox_default/superman-action-comic-num-2-renacimiento.jpg",
-        "id": 1644271926252
-    },
-    {
-        "title": "flash",
-        "price": "eweqwre",
+        "title": "",
+        "price": "",
         "thumbnail": "https://www.ecccomics.com/content/productos/1575/Flash_El-origen-de-Flash.jpg",
-        "id": 1644272076447
-    },
-    {
-        "title": "12356461",
-        "price": "2",
-        "thumbnail": "https://movieplay02.akamaized.net/14786-thickbox_default/superman-action-comic-num-2-renacimiento.jpg",
-        "id": 1644272169184
+        "id": 1644293540057
     }
 ]
