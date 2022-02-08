@@ -1,6 +1,6 @@
 #chat{
     
-    background-color: aquamarine;
+    background-color: #ddd;
     padding:20px;
 }
 #username{
@@ -16,6 +16,7 @@
     flex-direction: column-reverse;
     height: 12rem;
     overflow: hidden;
+    overflow-y: scroll;
     border: 1px #ccc dashed;
     font: .85rem/1.5 Arial;
     color: #313131;
@@ -69,4 +70,23 @@
 img{
     margin-left:20px;
     margin-right:20px;
+}
+.bubble{
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    padding-left:10px;
+    padding-right:10px;
+    margin:10px;
+    flex-direction:end;
+}
+.user{
+  color:blue;
+  font-weight:bold;
+}
+.date{
+  color:brown;
+}
+.message{
+  color:green;
+  font-style: italic;
 }
