@@ -1,0 +1,31 @@
+mat-card img{
+    object-fit: cover; 
+    height: 200px;/*this makes the image in src fit to the size specified below*/
+}
+mat-card{
+    width: 200px;
+    margin: 10px;
+}
+ul{
+    list-style: none;
+}
+.producto{
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+.lista{
+    width: 80%;
+}
+.total{
+    border: 1px solid #ccc;
+    width: 20%;
+    text-align: right;
+}
+.center{
+    padding:10px;
+    width: 400px;
+    margin:auto;
+    border:2px solid #ccc;
+}

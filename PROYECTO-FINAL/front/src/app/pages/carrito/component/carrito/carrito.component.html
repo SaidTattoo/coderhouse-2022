@@ -1,0 +1,16 @@
+
+<div class="center"> <button mat-raised-button>Eliminar carrito</button>
+    <span> total: $ {{total}} </span></div>
+
+<div class="carrito">
+   
+  <div class="lista" *ngFor="let items of carrito">
+    <ul>
+      <li class="producto">
+        <h4>{{ items.title }} - ${{ items.price }}</h4>
+        <button>eliminar</button>
+      </li>
+    </ul>
+  </div>
+  <div class="total">price</div>
+</div>

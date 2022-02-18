@@ -1,0 +1,15 @@
+<div class="content">
+    <div  *ngFor="let item of productos">
+        <mat-card class="example-card ">
+            <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ item.title }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src={{item.thumbnail}} alt='{{ item.title }}'>
+            <mat-card-actions>
+            <button mat-raised-button (click)="addToCart(item)" color="primary">AGREGAR AL CARRITO</button>  
+            </mat-card-actions>
+            <h2>${{ item.price }}</h2>
+        </mat-card>
+    </div>
+</div>
