@@ -16,7 +16,7 @@ carritoRouter.get('/',(req,res) => {
 })
 
 carritoRouter.delete('/:id',(req,res) => {
-    c.deleteCarrito(parseInt(req.params.id))
+    c.deleteCarrito(req.params.id)
     res.json({
         message: 'carrito eliminado',
         code:200
@@ -42,14 +42,20 @@ carritoRouter.post('/:id/productos',(req,res) => {
     })
 })
 
-carritoRouter.delete('/:id/productos/:idProducto',(req,res) => {
-    const { id } = req.params
+carritoRouter.delete('/:idchart/productos/:idProducto',(req,res) => {
+    const { idchart } = req.params
     const { idProducto } = req.params
-    let data =  c.deleteProductInCarrito(id,idProducto)
+    const { id } = req.query
+    let data =  c.deleteProductInCarrito(idchart,idProducto,id)
     res.json({
         carro: data,
         code:200
     })
 })
-
+carritoRouter.get('*', (req,res) => {
+    res.json({
+        message: 'Ruta no encontrada',
+        code:404
+    })
+})
 module.exports = carritoRouter;

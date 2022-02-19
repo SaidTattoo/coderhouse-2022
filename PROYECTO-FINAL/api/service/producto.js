@@ -1,12 +1,16 @@
 const fs = require('fs')
+const UIDGenerator = require('uid-generator');
+const uidgen = new UIDGenerator();
 class Producto {
     constructor() {
 
     }
     save(producto) {
-        producto.id = Date.now()
+        producto.id = uidgen.generateSync(),
+        producto.date = new Date()
         const data = this.getAll()
         data.push(producto)
+        console.log(producto)
         try {
             fs.writeFileSync('productos.txt', JSON.stringify(data, null, 4))
             return producto.id
@@ -32,6 +36,9 @@ class Producto {
             throw new Error('No se pudo leer el archivo')
         }
     }
+
+   
+
     deleteById(id) {
         const data = this.getAll()
         const deleted = data.filter(producto => producto.id !== id)
@@ -63,7 +70,27 @@ class Producto {
                 if (element.id === id) {
                     element.price = body.price
                     element.thumbnail = body.thumbnail
-                    element.title = body.title
+                    element.title = body.title,
+                    element.descripcion = body.descripcion
+                }
+            })
+            try {
+                fs.writeFileSync('productos.txt', JSON.stringify(data, null, 4))
+                return producto
+            } catch (error) {
+                throw new Error('No se pudo actualizar el producto')
+            }
+        } else {
+            return false
+        }
+    }
+    updateStock(id, stock) {
+        const data = this.getAll()
+        const producto = data.find(producto => producto.id === id)
+        if (producto) {
+            data.forEach(element => {
+                if (element.id === id) {
+                    element.stock = stock
                 }
             })
             try {
