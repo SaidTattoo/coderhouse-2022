@@ -4,9 +4,11 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
   providedIn: 'root'
 })
 export class DashboardService {
-
-  endpointProductos:string = 'http://localhost:8080/api/productos'; 
-  endpointCarrito:string = 'http://localhost:8080/api/carrito';
+  // endpointProductos:string = 'http://localhost:8080/api/productos'; 
+  // endpointCarrito:string = 'http://localhost:8080/api/carrito';
+  
+  endpointProductos:string = 'https://zippy-necessary-lodge.glitch.me/api/productos'; 
+  endpointCarrito:string = 'https://zippy-necessary-lodge.glitch.me/api/carrito';
   constructor(private http: HttpClient) { }
 
   public getProducts() {

@@ -1,0 +1,31 @@
+
+  <form [formGroup]="profileForm">
+      <mat-card-header>
+        <mat-card-title>
+          <h3 *ngIf="editOrSave === 'save'">Guardar producto</h3>
+          <h3 *ngIf="editOrSave === 'edit'">Editar producto</h3>
+        </mat-card-title>
+      </mat-card-header>
+    <mat-form-field appearance="outline">
+      <mat-label>title</mat-label>
+      <input matInput formControlName="title" placeholder="title" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>price</mat-label>
+      <input matInput type="number" formControlName="price" placeholder="price" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>thumbnail</mat-label>
+      <input matInput formControlName="thumbnail" placeholder="thumbnail" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>descripcion</mat-label>
+      <input matInput formControlName="descripcion" placeholder="descripcion" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>stock</mat-label>
+      <input matInput type="number" formControlName="stock" placeholder="Placeholder" />
+    </mat-form-field>
+ 
+  <button color="primary" mat-raised-button  *ngIf="editOrSave === 'save'" [disabled]="!disableBtn" [mat-dialog-close]="profileForm.value" >Agregar Producto</button>
+  <button color="primary" mat-raised-button  *ngIf="editOrSave === 'edit'" [mat-dialog-close]="profileForm.value" >editar Producto</button> </form>

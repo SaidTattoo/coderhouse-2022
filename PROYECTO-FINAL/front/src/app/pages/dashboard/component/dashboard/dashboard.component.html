@@ -5,11 +5,15 @@
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{ item.title }}</mat-card-title>
             </mat-card-header>
+            <mat-card-content>
+            <p>{{ item.descripcion }}</p>
+            </mat-card-content>
             <img mat-card-image src={{item.thumbnail}} alt='{{ item.title }}'>
             <mat-card-actions>
-            <button mat-raised-button (click)="addToCart(item)" color="primary">AGREGAR AL CARRITO</button>  
+            <button [disabled]="(!item.stock || item.stock==0)"  mat-raised-button (click)="addToCart(item)" color="primary">AGREGAR AL CARRITO</button>  
             </mat-card-actions>
             <h2>${{ item.price }}</h2>
+            <p>stock {{ item.stock || 'sin stock' }} </p>
         </mat-card>
     </div>
 </div>

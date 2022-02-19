@@ -1,5 +1,5 @@
 
-<div class="center"> <button mat-raised-button>Eliminar carrito</button>
+<div class="center"> <button (click)="deleteCarrito()" color="warn" [disabled]=disabled mat-raised-button>Eliminar carrito</button>
     <span> total: $ {{total}} </span></div>
 
 <div class="carrito">
@@ -7,10 +7,9 @@
   <div class="lista" *ngFor="let items of carrito">
     <ul>
       <li class="producto">
-        <h4>{{ items.title }} - ${{ items.price }}</h4>
-        <button>eliminar</button>
+        <h4>{{ items.title }} - ${{ items.price }} - {{items.cantidad}}</h4>
+        <button mat-raised-button color="warn" (click)="deleteProduct(items.idInCart, items.id)">eliminar</button>
       </li>
     </ul>
   </div>
-  <div class="total">price</div>
 </div>

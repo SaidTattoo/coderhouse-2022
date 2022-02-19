@@ -1,28 +1,31 @@
 import { HttpClient } from '@angular/common/http';
-import { REFERENCE_PREFIX } from '@angular/compiler/src/render3/view/util';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarritoService {
+export class AdminService {
+
   // endpointProductos:string = 'http://localhost:8080/api/productos'; 
   // endpointCarrito:string = 'http://localhost:8080/api/carrito';
   
   endpointProductos:string = 'https://zippy-necessary-lodge.glitch.me/api/productos'; 
   endpointCarrito:string = 'https://zippy-necessary-lodge.glitch.me/api/carrito';
   constructor(private http: HttpClient) { }
-  
 
-
-  getProductsCarrito(id:any) {
-    return this.http.get(`${this.endpointCarrito}/${id}/productos`);
+  createProduct(producto:any){
+   return this.http.post(this.endpointProductos, producto)
   }
-  deleteProduct(idCart:any, idProd:any, id:any ){
-    return this.http.delete(`${this.endpointCarrito}/${idCart}/productos/${idProd}?id=${id}`);
+  productList(){
+    return this.http.get(this.endpointProductos);
   }
-  deleteCarrito(id:any){
-    return this.http.delete(`${this.endpointCarrito}/${id}`);
+  deleteProduct(id:any){
+    return this.http.delete(`${this.endpointProductos}/${id}`);
+  }
+  editProduct(id:any, producto:any){
+    return this.http.put(`${this.endpointProductos}/${id}`, producto)
+  }
+  getProduct(id:any){
+    return this.http.get(`${this.endpointProductos}/${id}`);
   }
 }
