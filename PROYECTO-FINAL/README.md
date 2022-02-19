@@ -23,6 +23,7 @@ Deberás entregar el estado de avance de tu aplicación eCommerce Backend, que i
 
 
 
-ruta glitch del front https://evergreen-buttered-hemisphere.glitch.me/
-ruta backend https://zippy-necessary-lodge.glitch.me/api/productos
+### ruta glitch del front https://evergreen-buttered-hemisphere.glitch.me/
+
+### ruta backend https://zippy-necessary-lodge.glitch.me/api/productos
 
