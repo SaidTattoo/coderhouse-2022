@@ -27,3 +27,11 @@ Deberás entregar el estado de avance de tu aplicación eCommerce Backend, que i
 
 ### ruta backend https://zippy-necessary-lodge.glitch.me/api/productos
 
+![dashboard](Screenshot_2.png)
+
+
+en el home esta la vista de los productos y es donde se pueden agregar productos al carro 
+
+en admin se puede crear, editar, eliminar,listar los productos
+
+en carrito se puede ver el carro con los productos, eiminar el carro completo como tambien eliminar productos del carro 
