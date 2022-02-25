@@ -1,0 +1,26 @@
+[
+    {
+        "id": "5e9gEXR12Uew4ZXLbmwRBz",
+        "timestamp": 1645255367777,
+        "productos": [
+            {
+                "title": "casa",
+                "price": "1233",
+                "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+                "descripcion": "foto de alguna shit",
+                "date": "2022-02-19T07:22:47.787Z",
+                "id": "LaLwwottrY1VQtEfGpYy1t",
+                "idInCart": "GxGra2BEjprbCTHcrnigjm"
+            },
+            {
+                "title": "casa",
+                "price": "1233",
+                "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+                "descripcion": "foto de alguna shit",
+                "date": "2022-02-19T07:22:50.110Z",
+                "id": "LaLwwottrY1VQtEfGpYy1t",
+                "idInCart": "SPTrKf7rdrfyVRjwjqHqmL"
+            }
+        ]
+    }
+]

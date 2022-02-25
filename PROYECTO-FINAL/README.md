@@ -3,38 +3,35 @@
 Deberás entregar el estado de avance de tu aplicación eCommerce Backend, que implemente un servidor de aplicación basado en la plataforma Node.js y el módulo express. El servidor implementará dos conjuntos de rutas agrupadas en routers, uno con la url base '/productos' y el otro con '/carrito'. El puerto de escucha será el 8080 para desarrollo y process.env.PORT para producción en glitch.com
 ### Todo:
 
-- [ ] Ruta base **'/api/productos'** Implementará cuatro funcionalidades 
-- [ ] **'GET:'** '/:id?' - me permite listar todos los productos disponibles ó un producto por su id (disponible para usuarios y administradores) 
-- [ ] **'POST:'** '/' -Para incorporar productos al listado (disponibles para administradores) 
-- [ ] **'PUT:'**'/:id' -Actualizar un producto por si id (disponibles para administradores) 
-- [ ] **'DELETE:'**'/:id' -Borra un producto por su id (disponibles para administradores) 
+- [x] Ruta base **'/api/productos'** Implementará cuatro funcionalidades 
+- [x] **'GET:'** '/:id?' - me permite listar todos los productos disponibles ó un producto por su id (disponible para usuarios y administradores) 
+- [x] **'POST:'** '/' -Para incorporar productos al listado (disponibles para administradores) 
+- [x] **'PUT:'**'/:id' -Actualizar un producto por si id (disponibles para administradores) 
+- [x] **'DELETE:'**'/:id' -Borra un producto por su id (disponibles para administradores) 
 
 ---
 
-- [ ] Ruta base **'/api/carrito'** Implementará tres rutas disponibles para usuarios y administradores: 
+- [x] Ruta base **'/api/carrito'** Implementará tres rutas disponibles para usuarios y administradores: 
 
-- [ ] **'POST:'** '/' - Crea un carrito y devuelve su id.
-- [ ] **'DELETE:'** '/:id' - Vacía un carrito y lo elimina.
-- [ ] **'GET:'** '/:id/productos' - Me permite listar todos los productos guardados en el carrito
-- [ ] **'POST:'** '/:id/productos' - Para incorporar productos al carrito por su id de producto
-- [ ] **'DELETE:'** '/:id/productos/:id_prod' - Eliminar un producto del carrito por su id de carrito y de producto
+- [x] **'POST:'** '/' - Crea un carrito y devuelve su id.
+- [x] **'DELETE:'** '/:id' - Vacía un carrito y lo elimina.
+- [x] **'GET:'** '/:id/productos' - Me permite listar todos los productos guardados en el carrito
+- [x] **'POST:'** '/:id/productos' - Para incorporar productos al carrito por su id de producto
+- [x] **'DELETE:'** '/:id/productos/:id_prod' - Eliminar un producto del carrito por su id de carrito y de producto
 
 - [ ] Crear una variable booleana administrador, cuyo valor configuraremos más adelante con el sistema de login. Según su valor (true ó false) me permitirá alcanzar o no las rutas indicadas. En el caso de recibir un request a una ruta no permitida por el perfil, devolver un objeto de error. Ejemplo: { error : -1, descripcion: ruta 'x' método 'y' no autorizada }
 
-1) Un producto dispondrá de los siguientes campos:  id, timestamp, nombre, descripcion, código, foto (url), precio, stock.
-2) El carrito de compras tendrá la siguiente estructura: 
-id, timestamp(carrito), productos: { id, timestamp(producto), nombre, descripcion, código, foto (url), precio, stock }
-3) El timestamp puede implementarse con Date.now()
-4) Realizar la persistencia de productos y del carrito de compras en el filesystem.
 
-5) Para realizar la prueba de funcionalidad hay dos opciones:
-Probar con postman cada uno de los endpoints (productos y carrito) y su operación en conjunto.
-6) Realizar una aplicación frontend sencilla, utilizando HTML/CSS/JS ó algún framework de preferencia, que represente el listado de productos en forma de cards. En cada card figuran los datos del producto, que, en el caso de ser administradores, podremos editar su información. Para este último caso incorporar los botones actualizar y eliminar. También tendremos un formulario de ingreso de productos nuevos con los campos correspondientes y un botón enviar. Asimismo, construir la vista del carrito donde se podrán ver los productos agregados e incorporar productos a comprar por su id de producto. Esta aplicación de frontend debe enviar los requests get, post, put y delete al servidor utilizando fetch y debe estar ofrecida en su espacio público.
-7)  En todos los casos, el diálogo entre el frontend y el backend debe ser en formato JSON. El servidor no debe generar ninguna vista.
-8) En el caso de requerir una ruta no implementada en el servidor, este debe contestar un objeto de error: ej { error : -2, descripcion: ruta 'x' método 'y' no implementada}
-9) La estructura de programación será ECMAScript, separada tres en módulos básicos (router, lógica de negocio/api y persistencia ). Más adelante implementaremos el desarrollo en capas. Utilizar preferentemente clases, constructores de variables let y const y arrow function.
-10) Realizar la prueba de funcionalidad completa en el ámbito local (puerto 8080) y en glitch.com
 
-## Entrega 2
+### ruta glitch del front https://evergreen-buttered-hemisphere.glitch.me/
 
-## Entrega 3 
+### ruta backend https://zippy-necessary-lodge.glitch.me/api/productos
+
+![dashboard](Screenshot_2.png)
+
+
+en el home esta la vista de los productos y es donde se pueden agregar productos al carro 
+
+en admin se puede crear, editar, eliminar,listar los productos
+
+en carrito se puede ver el carro con los productos, eiminar el carro completo como tambien eliminar productos del carro 

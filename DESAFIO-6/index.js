@@ -39,12 +39,15 @@ app.get('/productos/vista',(req, res) => {
  io.on('connection',  (socket) => { 
 
     console.log('id', socket.id)
+    //create identicon from img
      identicon.generate({id:socket.id, size:100},(err,buffer) => {
         if (err) throw err
          fs.writeFileSync(`./public/img/${socket.id}.png`, buffer)
     })
     socket.on('disconnect', () => {
       io.emit('disconected', 'user disconnected');
+      //remove identicon from img
+      fs.unlinkSync(`./public/img/${socket.id}.png`)
     });
     io.emit('productos', c.getAll())
     socket.on('addNewProduct', (data) => {
@@ -55,6 +58,10 @@ app.get('/productos/vista',(req, res) => {
     //chat room
     socket.on('newMessage', (data) => {
         io.emit('message', data)
+    })
+    //typing event 
+    socket.on('typing', (data) => {
+        socket.broadcast.emit('typing', data)
     })
 });
 

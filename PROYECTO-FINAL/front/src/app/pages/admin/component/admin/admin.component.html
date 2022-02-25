@@ -1,0 +1,17 @@
+
+
+    <button mat-raised-button (click)="openDialog()">Agregar producto</button>
+
+<div class="carrito">
+    <div class="lista" *ngFor="let items of productos">
+      <ul>
+        <li class="producto">
+          <h4>{{ items.title }} - ${{ items.price }}</h4>
+          <img width="100" src="{{ items.thumbnail }}" alt="">
+          <button color="warn"  mat-raised-button (click)="deleteProduct(items.id)">eliminar</button>
+          <button color="primary" mat-raised-button (click)="editProduct(items.id)">editar</button>
+        </li>
+      </ul>
+    </div>
+</div>
+  

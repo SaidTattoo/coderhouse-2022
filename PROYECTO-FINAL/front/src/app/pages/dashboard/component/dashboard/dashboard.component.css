@@ -1,0 +1,13 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+mat-card img{
+    object-fit: cover; 
+    height: 200px;/*this makes the image in src fit to the size specified below*/
+}
+mat-card{
+    width: 200px;
+    margin: 10px;
+}
