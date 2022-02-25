@@ -1,72 +1,71 @@
 #chat{
-    
-    background-color: aquamarine;
-    padding:20px;
-}
+            background-color: aquamarine;
+            padding:20px;
+        }
 #username{
-   
-    margin:0 auto;
-    padding:5px;
-    border-radius:5px;
-    border:none;
-    margin:10px;
-}
+           border:none;
+           border-radius:5px;
+           margin:0 auto;
+           margin:10px;
+           padding:5px;
+       }
 #chat-box{
-    display: flex;
-    flex-direction: column-reverse;
-    height: 12rem;
-    overflow: hidden;
-    border: 1px #ccc dashed;
-    font: .85rem/1.5 Arial;
-    color: #313131;
-    position: relative;
-    }
+      border: 1px #ccc dashed;
+      color: #313131;
+      display: flex;
+      flex-direction: column-reverse;
+      font: .85rem/1.5 Arial; 
+      z-index: 100; 
+      overflow: hidden;
+      position: relative;
+     height: 12rem;
+  }
     .chat__message {
-        width: 45%;
-        display: flex;
-        align-items: flex-end;
-        transform-origin: 0 100%;
-        padding-top: 0;
-        transform: scale(0);
-        max-height: 0;
-        overflow: hidden;
-        animation: message 0.15s ease-out 0s forwards;
-        animation-delay: var(--delay);
-        --bgcolor: #d8d8d8;
-        --radius: 8px 8px 8px 0;
+          --bgcolor: #d8d8d8;
+          --radius: 8px 8px 8px 0;
+          align-items: flex-end;
+          animation: message 0.15s ease-out 0s forwards;
+          animation-delay: var(--delay);
+          display: flex;
+          max-height: 0;
+          overflow: hidden;
+          padding-top: 0;
+          transform: scale(0);
+          transform-origin: 0 100%;
+          width: 45%;
       }
       @keyframes message {
         0% {
-          max-height: 100vmax;
+            max-height: 100vmax;
         }
         80% {
-          transform: scale(1.1);
+            transform: scale(1.1);
         }
         100% {
-          transform: scale(1);
-          max-height: 100vmax;
-          overflow: visible;
-          padding-top: 1rem;
+            max-height: 100vmax;
+            overflow: visible;
+            padding-top: 1rem;
+            transform: scale(1);
         }
       }
 .me{
-    background-color: #f5f5f5;
-    border-radius: 5px;
-    padding:10px;
-    margin:10px;
-    flex-direction: row-reverse;
-    text-align: right;
-    align-self: flex-end;
-    transform-origin: 100% 100%;
-}
+      align-self: flex-end;
+      background-color: #f5f5f5;
+      border-radius: 5px;
+      flex-direction: row-reverse;
+      margin:10px;
+      padding:10px;
+      text-align: right;
+      transform-origin: 100% 100%;
+  }
 .another{
-    background-color: #f5f5f5;
-    border-radius: 5px;
-    padding:10px;
-    margin:10px;
-    flex-direction:end;
-}
+      background-color: #f5f5f5;
+      border-radius: 5px;
+      flex-direction:end;
+      margin:10px;
+      padding:10px;
+  }
 img{
-    margin-left:20px;
-    margin-right:20px;
-}
+      margin-left:20px;
+      margin-right:20px;
+  }

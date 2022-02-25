@@ -16,5 +16,11 @@
         "price": "",
         "thumbnail": "https://www.ecccomics.com/content/productos/1575/Flash_El-origen-de-Flash.jpg",
         "id": 1644293540057
+    },
+    {
+        "title": "eqweqw",
+        "price": "eqweqw",
+        "thumbnail": "https://movieplay02.akamaized.net/14786-thickbox_default/superman-action-comic-num-2-renacimiento.jpg",
+        "id": 1645747359090
     }
 ]
