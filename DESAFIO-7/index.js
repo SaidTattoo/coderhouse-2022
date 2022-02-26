@@ -36,9 +36,9 @@ app.get('/productos/vista',(req, res) => {
 
 
 //-------------------sockets -------------------//
- io.on('connection',  (socket) => { 
+io.on('connection', async  (socket) => { 
 
-    /*console.log('id', socket.id)
+   /* console.log('id', socket.id)
      identicon.generate({id:socket.id, size:100},(err,buffer) => {
         if (err) throw err
          fs.writeFileSync(`./public/img/${socket.id}.png`, buffer)
@@ -46,12 +46,20 @@ app.get('/productos/vista',(req, res) => {
     socket.on('disconnect', () => {
       io.emit('disconected', 'user disconnected');
     });
-    io.emit('productos', c.getAll())
-    socket.on('addNewProduct', (data) => {
-        console.log(data)
+        let  datas = await  c.getAll()
+        io.emit('productos',datas)
+    
+     socket.on('addNewProduct',  async  (data) => {
         c.save(data)
-        io.emit('productos', c.getAll())
+        let  datas = await  c.getAll()
+        io.emit('productos',datas)
     }) 
+    socket.on('deleteById',async (data) => {
+        await c.deleteById(data)   
+        let  datas = await  c.getAll()
+        io.emit('productos',datas)  
+    })
+
     //chat room
     socket.on('newMessage', (data) => {
         io.emit('message', data)

@@ -1,80 +1,68 @@
-const fs = require('fs')
+const { options } = require('../options/mariadb');
+const knex = require('knex')(options);
+
 class Contenedor {
     constructor() {
-
     }
-    save(producto) {
-        producto.id = Date.now()
-        const data = this.getAll()
-        data.push(producto)
+    async save({ price, title, thumbnail }) {
         try {
-            fs.writeFileSync('productos.txt', JSON.stringify(data, null, 4))
-            return producto.id
+        let producto = {
+            price: parseInt(price),
+            title,
+            thumbnail
+        }
+        let resp = await knex('productos').insert(producto)
+        return resp
         } catch (error) {
-            return false
+            throw new Error('No se pudo guardar el producto')
         }
     }
 
-    getById(id) {
-        const data = this.getAll()
-        return data.find(producto => producto.id === id)
-    }
-    getAll() {
-        try {
-            const data = fs.readFileSync('productos.txt', 'utf-8')
-            if (data.length >= 0) {
-                return JSON.parse(data)
-            } else {
-                return false
-            }
-
+    async getById(id) {
+        try {   
+            let resp = await knex('productos').select('*').where('id', id)
+            return resp
         } catch (error) {
-            throw new Error('No se pudo leer el archivo')
-        }
-    }
-    deleteById(id) {
-        const data = this.getAll()
-        const deleted = data.filter(producto => producto.id !== id)
-        if (this.getById(id)) {
-            try {
-                fs.writeFileSync('productos.txt', JSON.stringify(deleted, null, 4))
-                return true
-            } catch (error) {
-                throw new Error('No se pudo eliminar el producto')
-            }
-        } else {
-            return false
+            throw new Error('No se pudo encontrar el producto')
         }
 
     }
-    deleteAll() {
-        const data = []
+    async getAll() {
         try {
-            fs.writeFileSync('productos.txt', JSON.stringify(data, null, 4))
+            let data = await knex('productos').select('*')
+            return data
+        }	catch (error) {
+            throw new Error(error)
+        }
+    }
+    async deleteById(id) {
+         if (this.getById(id)) {
+             try {
+                let data = await knex.del().from('productos').where('id', id)
+                return data
+             } catch (error) {
+                 throw new Error('No se pudo eliminar el producto')
+             }
+         } else {
+             return false
+         }
+    }
+    async deleteAll() {
+        try {
+            let data = await  knex('productos').del()
+            return data
         } catch (error) {
             throw new Error('No se pudo eliminar el producto')
         }
     }
     update(id, body) {
-        const data = this.getAll()
-        const producto = data.find(producto => producto.id === id)
-        if (producto) {
-            data.forEach(element => {
-                if (element.id === id) {
-                    element.price = body.price
-                    element.thumbnail = body.thumbnail
-                    element.title = body.title
-                }
-            })
-            try {
-                fs.writeFileSync('productos.txt', JSON.stringify(data, null, 4))
-                return producto
-            } catch (error) {
-                throw new Error('No se pudo actualizar el producto')
-            }
-        } else {
-            return false
-        }
+       try {
+            let resp = knex('productos').where('id', id).update(body)
+            return resp
+       } catch (error) {
+           throw new Error('No se pudo actualizar el producto')
+       }
+       
     }
     getRandom() {
         const data = this.getAll()
