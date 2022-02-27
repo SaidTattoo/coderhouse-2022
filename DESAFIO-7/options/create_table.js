@@ -8,8 +8,10 @@ knex.schema.createTable('productos', (table) => {
     table.integer('price');
 }).then(() => {
     console.log('tabla creada')
+    process.exit()
 }).catch((err) => {
-   throw err
+    console.log(err)
+    process.exit()
 }).finally(() => {
     knex.destroy()
 })

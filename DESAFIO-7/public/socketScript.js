@@ -57,13 +57,17 @@ document.getElementById('sendMessage').addEventListener('click', () => {
 
 // renderizo los mensajes en pantalla 
 socket.on('message', (data) => {
-    if (data.userId === socket.id) {
-        document.getElementById('chat-messages').innerHTML += `<li style="color:blue;" class="me chat__message"> <img width="20" src="public/img/${data.userId}.png" > ${data.username} - ${fullDate()} - ${data.message}</li>`
-    } else {
-        document.getElementById('chat-messages').innerHTML += `<li class="another chat__message"> <img width="20" src="public/img/${data.userId}.png" > ${data.username} - ${fullDate()}  - ${data.message}</li>`
-    }
+    console.log('data', data)
+    data.forEach(dataM => {
+        if (dataM.userId === socket.id) {
+            document.getElementById('chat-messages').innerHTML += `<li style="color:blue;" class="me chat__message"> <img width="20" > ${dataM.username} - ${fullDate()} - ${dataM.message}</li>`
+        } else {
+            document.getElementById('chat-messages').innerHTML += `<li class="another chat__message"> <img width="20"> ${dataM.username} - ${fullDate()}  - ${dataM.message}</li>`
+        }
+    });
+    
 })
-
+// src="public/img/${data.userId}.png" 
 
 const fullDate = () => {
     const date = new Date()

@@ -16,9 +16,11 @@
       flex-direction: column-reverse;
       font: .85rem/1.5 Arial; 
       z-index: 100; 
+
       overflow: hidden;
+      overflow-y: scroll;
       position: relative;
-     height: 12rem;
+      height: 12rem;
   }
     .chat__message {
           --bgcolor: #d8d8d8;

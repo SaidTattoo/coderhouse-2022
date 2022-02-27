@@ -8,6 +8,8 @@ const Contenedor = require('./service/Contenedor');
 //const identicon = require('identicon')
 const fs = require('fs')
 const c = new Contenedor()
+const { optionsSqlite } = require('./options/sqlite');
+const knex = require('knex')(optionsSqlite);
 
 app.engine("hbs", engine({
     extname: "hbs",
@@ -56,13 +58,17 @@ io.on('connection', async  (socket) => {
     }) 
     socket.on('deleteById',async (data) => {
         await c.deleteById(data)   
-        let  datas = await  c.getAll()
+        let  datas = await c.getAll()
         io.emit('productos',datas)  
     })
 
     //chat room
-    socket.on('newMessage', (data) => {
-        io.emit('message', data)
+    let data = await  knex('chat').select('*')
+    io.emit('message', data )
+    socket.on('newMessage', async  (data) => {
+        await knex('chat').insert(data)
+        let datadb = await knex('chat').select('*')
+        io.emit('message', datadb)
     })
 });
 

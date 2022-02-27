@@ -1,5 +1,5 @@
-const { options } = require('../options/mariadb');
-const knex = require('knex')(options);
+const { optionsMaria } = require('../options/mariadb');
+const knex = require('knex')(optionsMaria);
 
 class Contenedor {
     constructor() {

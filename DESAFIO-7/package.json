@@ -4,13 +4,15 @@
   "description": "Primero se debe crear la carpeta public donde estara el archivo script por el lado del cliente, y se enlaza  con la etiqueta ```<script ></script>```",
   "main": "index.js",
   "dependencies": {
+    "better-sqlite3": "^7.5.0",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
     "identicon": "^3.1.1",
-    "knex": "^1.0.3",
+    "knex": "^0.95.15",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
-    "socket.io": "^4.4.1"
+    "socket.io": "^4.4.1",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {},
   "scripts": {
