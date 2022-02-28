@@ -4,13 +4,15 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const productosRouter = require('./routes');
 const  { engine } = require('express-handlebars');
-const Contenedor = require('./service/Contenedor');
+//const Contenedor = require('./service/Contenedor');
 //const identicon = require('identicon')
+//const c = new Contenedor()
 const fs = require('fs')
-const c = new Contenedor()
 const { optionsSqlite } = require('./options/sqlite');
-const knex = require('knex')(optionsSqlite);
-
+const { Databases } = require('./options/DB/Database');
+const { optionsMaria } = require('./options/mariadb');
+const dbMaria = new Databases(optionsMaria, 'productos')
+const dbSqlite = new Databases(optionsSqlite, 'chat')
 app.engine("hbs", engine({
     extname: "hbs",
     defaultLayout: "index.hbs",
@@ -28,9 +30,12 @@ app.use('/api/productos', productosRouter);
 app.get("/",(req, res) => {
     res.render("crearProducto")
 })
-
+app.get('/example', async (req, res) => {
+    let resp = await db.getById('1')
+    res.json({'resp':resp})
+})
 app.get('/productos/vista',(req, res) => {
-   // const data = c.getAll()
+   // const data = dbMaria.getAll()
    // res.render("main", data.length !== 0 ? { productos:data } : { error: 'no hay productos cargados' })
 
    res.render("main")
@@ -48,26 +53,26 @@ io.on('connection', async  (socket) => {
     socket.on('disconnect', () => {
       io.emit('disconected', 'user disconnected');
     });
-        let  datas = await  c.getAll()
+        let  datas = await  dbMaria.getAll()
         io.emit('productos',datas)
     
      socket.on('addNewProduct',  async  (data) => {
-        c.save(data)
-        let  datas = await  c.getAll()
+        dbMaria.save(data)
+        let  datas = await  dbMaria.getAll()
         io.emit('productos',datas)
     }) 
     socket.on('deleteById',async (data) => {
-        await c.deleteById(data)   
-        let  datas = await c.getAll()
+        await dbMaria.deleteById(data)   
+        let  datas = await dbMaria.getAll()
         io.emit('productos',datas)  
     })
 
     //chat room
-    let data = await  knex('chat').select('*')
+    let data = await  dbSqlite.getAll()
     io.emit('message', data )
     socket.on('newMessage', async  (data) => {
-        await knex('chat').insert(data)
-        let datadb = await knex('chat').select('*')
+        await dbSqlite.save(data)
+        let datadb = await dbSqlite.getAll()
         io.emit('message', datadb)
     })
 });
