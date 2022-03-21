@@ -6,6 +6,10 @@ const productosRouter = Router()
 const isAdmin = true
 const p = new Producto()
 
+// const p = process.env.DB === 'MONGODB' 
+//     ? require('../daos/productos/productoDaoMONGO') 
+//     : require('../daos/productos/productoDaoFIREBASE')
+
 productosRouter.get('/:id?',(req,res) => {
     res.json({
         data: req.params.id 
