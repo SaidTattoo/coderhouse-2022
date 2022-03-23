@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const path = require('path');
 const productosRouter = require('./router/productos');
 const carritoRouter = require('./router/carrito');
 const ContenedorFirebase = require('./contenedores/ContenedorFirebase');
 const ContenedorMongo = require('./contenedores/ContenedorMongo');
 
+const dotenv = require('dotenv').config();
 
 PORT = process.env.PORT || 8080;
 app.use(cors());
@@ -19,30 +21,12 @@ const fire = new ContenedorFirebase('productos')
 
 //mongo 
 const mongo = new ContenedorMongo('productos')
-
-mongo.save({  price : 1000,
+mongo.getAll().then((e) => console.log('--->',e))
+/*mongo.save({  price : 1000,
         thumbnail :'imagen',
         title : 'firestore',
-        descripcion :' body.descripcion'}).then(id => console.log(id))
+        descripcion :' body.descripcion'}).then(id => console.log(id))*/
 
-mongo.getAll().then(items => console.log(items))
-
-//firestore
-// fire.getAll().then((data) => {
-//     console.log('1 --', data)
-// })
-// fire.getById('Rzhtqd8mlV67yIXe6uyi').then((data) => {
-//     console.log('2 --',data)
-// })
-
-// fire.save({
-//    price : 1000,
-//     thumbnail :'imagen',
-//     title : 'firestore',
-//     descripcion :' body.descripcion'
-// }).then((data) => {
-//     console.log('3 --',data)
-// })
 
 
 
